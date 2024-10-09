@@ -1,0 +1,20 @@
+services:
+  app:
+    image: spring-test
+    environment:
+      - DB_URL=jdbc:postgresql://postgres:5432/test
+      - DB_USERNAME=postgres
+      - DB_PASSWORD=1111
+    ports:
+      - "8080:8080"
+    depends_on:
+      - postgres
+
+  postgres:
+    image: postgress-test:latest
+    environment:
+      POSTGRES_DB: postgres
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 1111
+    ports:
+      - "5432:5432"
